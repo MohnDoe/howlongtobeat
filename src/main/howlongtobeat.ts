@@ -24,9 +24,10 @@ export class HowLongToBeatService {
     return entry;
   }
 
-  async search(query: string): Promise<Array<HowLongToBeatEntry>> {
+  async search(query: string, page: number): Promise<Array<HowLongToBeatEntry>> {
     let searchPage = await this.scraper.search(
       query,
+      page,
       HowLongToBeatService.SEARCH_URL
     );
     let result = HowLongToBeatParser.parseSearch(searchPage, query);

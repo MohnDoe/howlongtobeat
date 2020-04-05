@@ -24,13 +24,13 @@ describe('Integration-Testing HowLongToBeatService', () => {
     });
     describe('Test for search()', () => {
         it('should have no search results when searching for dorks', () => {
-            return new howlongtobeat_1.HowLongToBeatService().search('dorks').then((result) => {
+            return new howlongtobeat_1.HowLongToBeatService().search('dorks', 1).then((result) => {
                 assert.isNotNull(result);
                 assert.strictEqual(result.length, 0);
             });
         });
         it('should have at least 3 search results when searching for dark souls III', () => {
-            return new howlongtobeat_1.HowLongToBeatService().search('dark souls III').then((result) => {
+            return new howlongtobeat_1.HowLongToBeatService().search('dark souls III', 1).then((result) => {
                 assert.isNotNull(result);
                 assert.isTrue(result.length > 3);
                 assert.strictEqual(result[0].id, '26803');
@@ -41,14 +41,14 @@ describe('Integration-Testing HowLongToBeatService', () => {
             });
         });
         it('should have 1 search results with 100% similarity when searching for Persona 4: Golden', () => {
-            return new howlongtobeat_1.HowLongToBeatService().search('Persona 4 Golden').then((result) => {
+            return new howlongtobeat_1.HowLongToBeatService().search('Persona 4 Golden', 1).then((result) => {
                 assert.isNotNull(result);
                 assert.strictEqual(result.length, 1);
                 //assert.strictEqual(result[0].similarity, 1);
             });
         });
         it('Entries without any time settings (e.g. "Surge") should have a zero hour result', () => {
-            return new howlongtobeat_1.HowLongToBeatService().search('Surge').then((result) => {
+            return new howlongtobeat_1.HowLongToBeatService().search('Surge', 1).then((result) => {
                 console.log(result);
                 assert.isNotNull(result);
                 assert.isTrue(result.length > 1);

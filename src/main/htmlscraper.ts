@@ -20,11 +20,11 @@ export class HtmlScraper {
     return result;
   }
 
-  async search(query: string, url: string): Promise<string> {
+  async search(query: string, page: number, url: string): Promise<string> {
     let result: Promise<string> = new Promise<string>((resolve, reject) => {
       request.post(url, {
         qs: {
-          page: 1
+          page: page
         },
         form: {
           'queryString': query,

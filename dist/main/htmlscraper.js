@@ -31,12 +31,12 @@ class HtmlScraper {
             return result;
         });
     }
-    search(query, url) {
+    search(query, page, url) {
         return __awaiter(this, void 0, void 0, function* () {
             let result = new Promise((resolve, reject) => {
                 request.post(url, {
                     qs: {
-                        page: 1
+                        page: page
                     },
                     form: {
                         'queryString': query,

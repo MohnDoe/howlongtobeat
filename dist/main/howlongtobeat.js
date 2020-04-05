@@ -27,9 +27,9 @@ class HowLongToBeatService {
             return entry;
         });
     }
-    search(query) {
+    search(query, page) {
         return __awaiter(this, void 0, void 0, function* () {
-            let searchPage = yield this.scraper.search(query, HowLongToBeatService.SEARCH_URL);
+            let searchPage = yield this.scraper.search(query, page, HowLongToBeatService.SEARCH_URL);
             let result = HowLongToBeatParser.parseSearch(searchPage, query);
             return result;
         });
